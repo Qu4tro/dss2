@@ -215,7 +215,7 @@ public class KillBills extends javax.swing.JFrame {
         new RegistarPagamento(this,true,this.k).setVisible(true);
     }//GEN-LAST:event_jbRegistPagamentoActionPerformed
 
-   public final void updateList(){
+   public void updateList(){
         DefaultListModel<String> lista = new DefaultListModel<>();
         k.loggedUser.getGrupos().stream().forEach(g -> lista.addElement(g.getNome()));
         jList1.setModel(lista);
