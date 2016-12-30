@@ -219,7 +219,7 @@ public class KillBills extends javax.swing.JFrame {
     }//GEN-LAST:event_jbLogoutActionPerformed
 
     private void jbPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPerfilActionPerformed
-        new Perfil(this, true,this.k).setVisible(true);
+        new Perfil(this, true).setVisible(true);
     }//GEN-LAST:event_jbPerfilActionPerformed
 
    public void updateList(){

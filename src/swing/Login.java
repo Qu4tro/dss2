@@ -196,8 +196,8 @@ public class Login extends javax.swing.JFrame {
                 System.out.println("Erro");
         }*/
         if(k.getIntLoginNoDB(nome,password) == 1){
-                 JOptionPane.showMessageDialog(null, "Sucesso");
-                 new KillBills(this.k).setVisible(true);
+                JOptionPane.showMessageDialog(null, "Sucesso");
+                new KillBills(this.k).setVisible(true);
                 this.dispose();
             }
             else{
