@@ -7,6 +7,7 @@ package swing;
 
 import Classes.Grupo;
 import Classes.KillBill;
+import java.awt.Frame;
 import javax.swing.DefaultListModel;
 
 /**
@@ -21,12 +22,14 @@ public class MenuGrupo extends javax.swing.JFrame {
     /**
      * Creates new form MenuGrupo
      */
-    public MenuGrupo(java.awt.Frame parent,boolean modal,KillBill k, String g) {
+    public MenuGrupo(KillBill k, String g) {
         initComponents();
         this.k = k;
         this.grupo = g;
         updateList();
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +54,7 @@ public class MenuGrupo extends javax.swing.JFrame {
         jAddmembro = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,9 +157,9 @@ public class MenuGrupo extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))
-                .addGap(417, 417, 417))
+                    .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(303, 303, 303))
         );
 
         jAddmembro.setText("Adicionar membro");
@@ -172,6 +176,13 @@ public class MenuGrupo extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jList1);
 
+        jButton1.setText("Voltar menu principal");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,12 +197,14 @@ public class MenuGrupo extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jAddmembro)
-                        .addGap(65, 65, 65))
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(69, 69, 69)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jAddmembro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(93, 93, 93))))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -203,13 +216,14 @@ public class MenuGrupo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jAddmembro)
-                        .addContainerGap())))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -224,12 +238,17 @@ public class MenuGrupo extends javax.swing.JFrame {
     }//GEN-LAST:event_jbLogoutActionPerformed
 
     private void jbPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPerfilActionPerformed
-        new Perfil(this, true).setVisible(true);
+        new Perfil(this, true,this.k).setVisible(true);
     }//GEN-LAST:event_jbPerfilActionPerformed
 
     private void jAddmembroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddmembroActionPerformed
-        new AdicionarMembro(this,true,this.k);
+        new AdicionarMembro(this,true,this.k).setVisible(true);
     }//GEN-LAST:event_jAddmembroActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new KillBills(this.k).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     
     public void updateList(){
@@ -241,6 +260,7 @@ public class MenuGrupo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAddmembro;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;

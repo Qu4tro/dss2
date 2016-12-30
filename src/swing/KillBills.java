@@ -249,7 +249,7 @@ public class KillBills extends javax.swing.JFrame {
     }//GEN-LAST:event_jbLogoutActionPerformed
 
     private void jbPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPerfilActionPerformed
-        new Perfil(this, true).setVisible(true);
+        new Perfil(this, true,this.k).setVisible(true);
     }//GEN-LAST:event_jbPerfilActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -258,7 +258,8 @@ public class KillBills extends javax.swing.JFrame {
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
         JList list = (JList) evt.getSource();
-        new MenuGrupo(this,true,this.k,(String) list.getSelectedValue()).setVisible(true);
+        new MenuGrupo(this.k,(String) list.getSelectedValue()).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jList1MouseClicked
 
    public final void updateList(){
