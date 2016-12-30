@@ -5,15 +5,9 @@
  */
 package swing;
 
-import Classes.Grupo;
 import Classes.KillBill;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.String;
-import static java.nio.file.Files.list;
-import static java.rmi.Naming.list;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.ListModel;
+
+import javax.swing.*;
 
 
 
@@ -22,27 +16,45 @@ import javax.swing.ListModel;
  * @author kratos
  */
 public class KillBills extends javax.swing.JFrame {
-   
-   
-    private KillBill k;
 
- 
+
+    public javax.swing.JList<String> jList1;
+    private KillBill k;
+    /**
+     * @param args the command line arguments
+     */
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollBar jScrollBar2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton jbLogout;
+    private javax.swing.JButton jbPerfil;
+    private javax.swing.JButton jbRegistPagamento;
+    private javax.swing.JLabel jlNomeMorador;
+    private javax.swing.JLabel jlPhoto;
+    private javax.swing.JPanel jpSaldos;
     public KillBills(KillBill killbill) {
         initComponents();
         this.k = killbill;
         updateList();
     }
-    
-    
+
     public void updateList(){
         DefaultListModel<String> lista = new DefaultListModel<>();
-        int size = 1;
-        while(size != 0){
-            lista.addElement("Principal");
-            size--;
-        }
+        k.loggedUser.getGrupos().stream().forEach(g -> lista.addElement(g.getNome()));
         jList1.setModel(lista);
-        
     }
 
     /**
@@ -308,7 +320,7 @@ public class KillBills extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void jbLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLogoutActionPerformed
         //new Login().setVisible(true);
         this.dispose();
@@ -336,32 +348,5 @@ public class KillBills extends javax.swing.JFrame {
             new MenuGrupo(this.k).setVisible(true);
         }
     }//GEN-LAST:event_jList1MouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-  
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    public javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollBar jScrollBar2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton jbLogout;
-    private javax.swing.JButton jbPerfil;
-    private javax.swing.JButton jbRegistPagamento;
-    private javax.swing.JLabel jlNomeMorador;
-    private javax.swing.JLabel jlPhoto;
-    private javax.swing.JPanel jpSaldos;
     // End of variables declaration//GEN-END:variables
 }
