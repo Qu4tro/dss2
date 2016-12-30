@@ -230,7 +230,7 @@ public class MenuGrupo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbNovaDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovaDespesaActionPerformed
-        new NovaDespesa(this, true).setVisible(true);
+        new NovaDespesa(this,true,grupo, this.k).setVisible(true);
     }//GEN-LAST:event_jbNovaDespesaActionPerformed
 
     private void jbLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLogoutActionPerformed

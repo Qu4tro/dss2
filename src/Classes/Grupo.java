@@ -17,7 +17,7 @@ public class Grupo{
     public Utilizador moderador;
     public List<Utilizador> membros;
     public String nome;
-  //  public List<Despesa> historico;
+    public List<Despesa> historico;
        
 
     // Construtores
@@ -25,12 +25,14 @@ public class Grupo{
 		this.moderador = moderador;
 		this.membros = new ArrayList<Utilizador>();
 		this.nome = nome;
-		//this.historico = new ArrayList<Despesa>();
+		this.historico = new ArrayList<Despesa>();
 	}
+        
         public Grupo (String nome){
             this.moderador = null;
             this.membros = new ArrayList<Utilizador>();
             this.nome = nome;
+            this.historico = new ArrayList<Despesa>();
         }
         public Grupo (){
             
@@ -85,6 +87,10 @@ public class Grupo{
 		return new ArrayList<>(this.membros);
 	}
         
+        
+        public void adicionarDespesa(Despesa d) {
+            historico.add(d);
+        }
         
 /*	public ArrayList<Despesa> listarDespesas (){
 		return new ArrayList<>(this.historico);

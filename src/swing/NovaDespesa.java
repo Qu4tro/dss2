@@ -5,19 +5,30 @@
  */
 package swing;
 
+import Classes.KillBill;
+import java.awt.Frame;
+import java.util.GregorianCalendar;
+
 /**
  *
  * @author kratos
  */
 public class NovaDespesa extends javax.swing.JDialog {
 
+    private KillBill k;
+    private Frame parent;
+    private String grupo;
     /**
      * Creates new form NovaDespesa
      */
-    public NovaDespesa(java.awt.Frame parent, boolean modal) {
+     public NovaDespesa(java.awt.Frame parent, boolean modal, String grupo, KillBill k) {
         super(parent, modal);
+        this.grupo = grupo;
+        this.parent = (Frame) parent;
+        this.k = k;
         initComponents();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -267,7 +278,15 @@ public class NovaDespesa extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jbCriarDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCriarDespesaActionPerformed
- 
+           k.adicionarDespesa(grupo, k.loggedUser,
+               jtDescrição.getText(),
+                Float.parseFloat(jtPreco.getText()),
+                new GregorianCalendar(
+                        Integer.parseInt(jTextField1.getText()),
+                        Integer.parseInt(jTextField2.getText()),
+                        Integer.parseInt(jTextField3.getText())
+                )
+        );
         this.dispose();
     }//GEN-LAST:event_jbCriarDespesaActionPerformed
 

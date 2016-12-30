@@ -6,9 +6,11 @@
 package Classes;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class KillBill {
     
@@ -20,8 +22,8 @@ public class KillBill {
     public KillBill(){
         this.users = new HashMap<>();
         this.grupos = new HashMap<>();
-        Grupo b = new Grupo ( "Principal");
         Utilizador u = new Utilizador("manuel","","12345","");
+        Grupo b = new Grupo ("Principal");
         loggedUser = u;
         u.addGrupo(b);
         b.addMembro(u);
@@ -79,4 +81,14 @@ public class KillBill {
       int size = this.users.get(nome).getSize();
       return size;
     }
+    
+       public void adicionarDespesa(String grupo, Utilizador responsavel,
+                                 String descricao, Float valor,
+                                 GregorianCalendar dataDespesa) {
+
+        GregorianCalendar now = new GregorianCalendar();
+        Optional.ofNullable(grupos.get(grupo)).ifPresent(g ->
+                g.adicionarDespesa(new Despesa(descricao, valor, responsavel, now, dataDespesa)));
+    }
+
 }

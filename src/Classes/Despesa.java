@@ -17,12 +17,13 @@ public class Despesa {
     private Map<String, Float> racioPagamentoDevido;
 
     // Construtores
-    public Despesa(String descricao, Float valor, Utilizador responsavel, String dataCriacao, String dataDespesa) {
+    public Despesa(String descricao, Float valor, Utilizador responsavel,
+                   GregorianCalendar dataCriacao, GregorianCalendar dataDespesa) {
         setDescricao(descricao);
         setValor(valor);
         setResponsavel(responsavel);
-        setDataCriacao(dataCriacao);
         setDataDespesa(dataDespesa);
+        this.dataCriacao = dataCriacao;
         tempoRecurrencia = -1;
         dataLimite = null;
     }
@@ -68,8 +69,8 @@ public class Despesa {
         return dataDespesa;
     }
 
-    public void setDataDespesa(String data) {
-        this.dataDespesa = Utils.parseData(data);
+    public void setDataDespesa(GregorianCalendar data) {
+        this.dataDespesa = data;
     }
 
     public void setRacioPagamentoFeito(Utilizador user, Float racio) {
