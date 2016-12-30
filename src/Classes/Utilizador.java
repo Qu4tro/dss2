@@ -1,6 +1,7 @@
 
 package Classes;
 
+import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,11 +15,14 @@ import java.util.List;
     public String email;
     public List<Grupo> grupos;
 
-
+    public Utilizador(){
+        this.grupos = new ArrayList<>();
+    }
  
     public Utilizador(String nick, String email) {
         this.nick = nick;
         this.email = email;
+        this.grupos = new ArrayList<>();
     }
 
     public Utilizador(String nickname,String email,String password,String iban){

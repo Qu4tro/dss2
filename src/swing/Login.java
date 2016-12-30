@@ -198,7 +198,7 @@ public class Login extends javax.swing.JFrame {
         catch(SQLException e){
                 System.out.println("Erro");
         }*/
-        if(k.getIntLoginNoDB(nome,password) == 1){
+        if(k.getIntLoginNoDB(nome,password)){
                 JOptionPane.showMessageDialog(null, "Sucesso");
                 new KillBills(this.k).setVisible(true);
                 this.dispose();

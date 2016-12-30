@@ -5,12 +5,17 @@
  */
 package Classes;
 
+import daos.GrupoDAO;
+import daos.UtilizadorDAO;
+
+import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class KillBill {
     
@@ -43,34 +48,33 @@ public class KillBill {
     
     
     public boolean registarUtilizadorNoDB (String nickname, String email, String password, String iban){
-        Utilizador u = new Utilizador(nickname,email,password,iban);
-        boolean res = false;
-        if (!this.users.containsKey(nickname)){
-            this.users.put(nickname,u);
-            res = true;
+
+        if (UtilizadorDAO.existeUtilizador(nickname)){
+            return false;
+        } else {
+            Utilizador u = new Utilizador(nickname,email,password,iban);
+            this.users.put(nickname, u);
+            UtilizadorDAO.addUtilizador(u);
+
+            return true;
         }
-        return res;
+    }
+
+    public boolean getIntLoginNoDB(String nome, String password){
+
+        loggedUser =
+        Optional.ofNullable(
+        Optional.ofNullable(users.get(nome))
+                    .orElse(UtilizadorDAO.getUtilizador(nome)))
+                    .filter(u -> u.getPassword().equals(password))
+                    .orElse(null);
+
+        return (loggedUser != null);
     }
     
-    public int getIntLoginNoDB(String nome, String password){
-        if(this.users.containsKey(nome)){
-            String s = this.users.get(nome).getPassword();
-            if(s.equals(password)){
-                return 1;
-            }
-            else return 0;
-        }
-        else return 0;
-    }
-    
-    public List<String> getGrupos(String nome){
-            List<String> lista = new ArrayList();
-            for(Grupo u : users.get(nome).getGrupos()){
-                lista.add(u.getNome());
-            }
-            return lista;
-            
-        //isto e a lista para depois se meter na Jlist
+    public List<String> getGrupos(String user){
+            //return users.get(nome).getGrupos().stream().map(Grupo::getNome).collect(Collectors.toList());
+        return GrupoDAO.getGrupos(user);
     }
     
     public Grupo getGrupo(String nome){

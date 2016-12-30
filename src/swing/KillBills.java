@@ -219,7 +219,7 @@ public class KillBills extends javax.swing.JFrame {
 
    public void updateList(){
         DefaultListModel<String> lista = new DefaultListModel<>();
-        k.loggedUser.getGrupos().stream().forEach(g -> lista.addElement(g.getNome()));
+        k.getGrupos(k.loggedUser.getNickname()).stream().forEach(n -> lista.addElement(n));
         jList1.setModel(lista);
     }
 
