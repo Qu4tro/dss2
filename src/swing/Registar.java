@@ -184,7 +184,6 @@ public class Registar extends javax.swing.JDialog {
         String email = jEmailField.getText();
             if (k.registarUtilizadorNoDB(nickname,email,password,iban)){
                 JOptionPane.showMessageDialog(null,"Conta criada");
-                new Login(this.k).setVisible(true);
                 this.dispose();
             }
             else {

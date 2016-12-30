@@ -235,6 +235,7 @@ public class MenuGrupo extends javax.swing.JFrame {
 
     private void jbLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLogoutActionPerformed
         new Login(this.k).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jbLogoutActionPerformed
 
     private void jbPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPerfilActionPerformed

@@ -129,7 +129,6 @@ public class CriarGrupo extends javax.swing.JDialog {
         String nome = jTextField1.getText();
         if(k.adicionarGrupo(nome)){
             JOptionPane.showMessageDialog(null,"Grupo criado");
-            parent.updateList();
             this.dispose();
         }
         else {
