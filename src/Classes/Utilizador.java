@@ -82,9 +82,9 @@ import java.util.List;
 	}
     
     public List<Grupo> getGrupos(){
-        return this.grupos;
-        
+        return new ArrayList<>(grupos);
     }
+    
     public Grupo getGrupo1(){
         Grupo u = new Grupo();
         if(grupos!=null){
