@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package killbills;
+package swing;
+
+import Classes.Grupo;
+import Classes.KillBill;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -11,11 +15,18 @@ package killbills;
  */
 public class MenuGrupo extends javax.swing.JFrame {
 
+    private KillBill k;
+    public javax.swing.JList<String> jListMembros;
+    private String grupo;
+    
     /**
      * Creates new form MenuGrupo
      */
-    public MenuGrupo() {
+    public MenuGrupo(KillBill k, String g) {
         initComponents();
+        this.k = k;
+        this.grupo = g;
+        updateList();
     }
 
     /**
@@ -152,6 +163,11 @@ public class MenuGrupo extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jList1);
 
         jAddmembro.setText("Adicionar membro");
+        jAddmembro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAddmembroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,47 +217,24 @@ public class MenuGrupo extends javax.swing.JFrame {
     }//GEN-LAST:event_jbNovaDespesaActionPerformed
 
     private void jbLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLogoutActionPerformed
-        new Login().setVisible(true);
+        new Login(this.k).setVisible(true);
     }//GEN-LAST:event_jbLogoutActionPerformed
 
     private void jbPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPerfilActionPerformed
         new Perfil(this, true).setVisible(true);
     }//GEN-LAST:event_jbPerfilActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuGrupo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuGrupo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuGrupo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuGrupo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jAddmembroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddmembroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jAddmembroActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuGrupo().setVisible(true);
-            }
-        });
+    
+    public void updateList(){
+        DefaultListModel<String> lista = new DefaultListModel<>();
+        k.getGrupo(grupo).listarMembros().stream().forEach(m-> lista.addElement(m.getNickname()));
+        this.jListMembros.setModel(lista);
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAddmembro;

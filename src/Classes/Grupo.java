@@ -81,10 +81,11 @@ public class Grupo{
             membros.add(u);
         }
 
-	/*public public ArrayList<Utilizador> listarMembros (){
+	public ArrayList<Utilizador> listarMembros (){
 		return new ArrayList<>(this.membros);
 	}
-*/
+        
+        
 /*	public ArrayList<Despesa> listarDespesas (){
 		return new ArrayList<>(this.historico);
 	}

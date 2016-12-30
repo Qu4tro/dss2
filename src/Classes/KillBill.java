@@ -63,7 +63,6 @@ public class KillBill {
     
     public List<String> getGrupos(String nome){
             List<String> lista = new ArrayList();
-            String temp = "";
             for(Grupo u : users.get(nome).getGrupos()){
                 lista.add(u.getNome());
             }
@@ -72,15 +71,12 @@ public class KillBill {
         //isto e a lista para depois se meter na Jlist
     }
     
-    public String getNomeGrupo(String nome){
-            Grupo a = this.users.get(nome).getGrupo1();
-            
-            String s = a.getNome();
-            return s;
+    public Grupo getGrupo(String nome){
+            return this.grupos.get(nome);
     }
 
-  public int getSizeGrupo(String nome){
+    public int getSizeGrupo(String nome){
       int size = this.users.get(nome).getSize();
       return size;
-  }
+    }
 }
