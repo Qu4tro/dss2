@@ -82,13 +82,20 @@ public class KillBill {
       return size;
     }
     
-       public void adicionarDespesa(String grupo, Utilizador responsavel,
-                                 String descricao, Float valor,
-                                 GregorianCalendar dataDespesa) {
+    public void adicionarDespesa(String grupo, Utilizador responsavel, String descricao, Float valor,GregorianCalendar dataDespesa) {
 
         GregorianCalendar now = new GregorianCalendar();
         Optional.ofNullable(grupos.get(grupo)).ifPresent(g ->
                 g.adicionarDespesa(new Despesa(descricao, valor, responsavel, now, dataDespesa)));
     }
 
+       
+    public boolean adicionarGrupo(String nome){
+        boolean res = false;
+        if (!this.grupos.containsKey(nome)){
+            this.grupos.put(nome,new Grupo(this.loggedUser,nome));
+            res = true;
+        }
+        return res;
+    }
 }

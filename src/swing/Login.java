@@ -30,6 +30,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToolBar1 = new javax.swing.JToolBar();
         jPanel1 = new javax.swing.JPanel();
         jlKillBills = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -42,6 +43,8 @@ public class Login extends javax.swing.JFrame {
         jbLogin = new javax.swing.JButton();
         jbRegistar = new javax.swing.JButton();
         JSair = new javax.swing.JButton();
+
+        jToolBar1.setRollover(true);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -230,6 +233,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton jbLogin;
     private javax.swing.JButton jbRegistar;
     private javax.swing.JLabel jlKillBills;

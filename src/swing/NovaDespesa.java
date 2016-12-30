@@ -18,6 +18,7 @@ public class NovaDespesa extends javax.swing.JDialog {
     private KillBill k;
     private Frame parent;
     private String grupo;
+    
     /**
      * Creates new form NovaDespesa
      */

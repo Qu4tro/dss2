@@ -7,6 +7,8 @@ package swing;
 
 import Classes.KillBill;
 import java.awt.Frame;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -124,7 +126,20 @@ public class CriarGrupo extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String nome = jTextField1.getText();
+        if(k.adicionarGrupo(nome)){
+            JOptionPane.showMessageDialog(null,"Grupo criado");
+            parent
+            DefaultListModel<String> lista = new DefaultListModel<>();
+            k.loggedUser.getGrupos().stream().forEach(g -> lista.addElement(g.getNome()));
+            jList1.setModel(lista);
+            this.dispose();
+        }
+        else {
+            JOptionPane.showMessageDialog(null,"Nome já existente");
+            this.dispose();
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
