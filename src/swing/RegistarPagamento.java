@@ -6,6 +6,7 @@
 package swing;
 
 import Classes.KillBill;
+import java.awt.Frame;
 
 /**
  *
@@ -14,7 +15,7 @@ import Classes.KillBill;
 public class RegistarPagamento extends javax.swing.JDialog {
 
     private KillBill k;
-    
+    private Frame parent;
     /**
      * Creates new form RegistarPagamento
      */
@@ -22,6 +23,7 @@ public class RegistarPagamento extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.k = k;
+        this.parent = (Frame) parent;
     }
 
     /**
