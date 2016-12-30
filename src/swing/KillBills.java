@@ -310,7 +310,7 @@ public class KillBills extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void jbLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLogoutActionPerformed
-        //new Login().setVisible(true);
+        new Login(this.k).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jbLogoutActionPerformed
 
