@@ -6,30 +6,28 @@
 package Classes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 
 public class KillBill {
     
     
     public Map<String,Utilizador> users;
     //public Map<String,Grupo> grupos;
-    
-    
+    public Utilizador loggedUser;
     
     public KillBill(){
         this.users = new HashMap<>();
-        
+
         Grupo b = new Grupo ( "Principal");
         Utilizador u = new Utilizador("manuel","","12345","");
+        loggedUser = u;
         u.addGrupo(b);
         b.addMembro(u);
         this.users.put("manuel",u);
-       
-        
-        
     }
+
   /*  public int getIntLogin(String email, String pass) throws SQLException {
     
         int abc = NewClass.verificaLogin(email,pass);
