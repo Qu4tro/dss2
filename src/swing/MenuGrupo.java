@@ -256,6 +256,8 @@ public class MenuGrupo extends javax.swing.JFrame {
         DefaultListModel<String> lista = new DefaultListModel<>();
         k.getGrupo(grupo).listarMembros().stream().forEach(m-> lista.addElement(m.getNickname()));
         this.jList1.setModel(lista);
+        
+        this.jLabel1.setText(grupo);
     }
    
 
