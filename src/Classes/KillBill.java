@@ -14,18 +14,19 @@ public class KillBill {
     
     
     public Map<String,Utilizador> users;
-    //public Map<String,Grupo> grupos;
+    public Map<String,Grupo> grupos;
     public Utilizador loggedUser;
     
     public KillBill(){
         this.users = new HashMap<>();
-
+        this.grupos = new HashMap<>();
         Grupo b = new Grupo ( "Principal");
         Utilizador u = new Utilizador("manuel","","12345","");
         loggedUser = u;
         u.addGrupo(b);
         b.addMembro(u);
         this.users.put("manuel",u);
+        this.grupos.put("Principal", b);
     }
 
   /*  public int getIntLogin(String email, String pass) throws SQLException {
