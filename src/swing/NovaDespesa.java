@@ -267,6 +267,7 @@ public class NovaDespesa extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jbCriarDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCriarDespesaActionPerformed
+ 
         this.dispose();
     }//GEN-LAST:event_jbCriarDespesaActionPerformed
 

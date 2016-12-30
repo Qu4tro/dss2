@@ -7,6 +7,7 @@ package swing;
 
 import Classes.KillBill;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 /**
  *
@@ -192,6 +193,11 @@ public class KillBills extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
         jButton1.setText("Criar grupo");
@@ -247,8 +253,13 @@ public class KillBills extends javax.swing.JFrame {
     }//GEN-LAST:event_jbPerfilActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        //new CriarGrupo(this,true,this.k);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+        JList list = (JList) evt.getSource();
+        new MenuGrupo(this,true,this.k,(String) list.getSelectedValue()).setVisible(true);
+    }//GEN-LAST:event_jList1MouseClicked
 
    public final void updateList(){
         DefaultListModel<String> lista = new DefaultListModel<>();
