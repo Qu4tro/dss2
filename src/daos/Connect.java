@@ -9,24 +9,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
  
-/**
- *
- * @author sqlitetutorial.net
- */
-public class Connect {
-     /**
-     * Connect to a sample database
-     */
+class Connect {
     public static Connection connect() {
         Connection conn = null;
         try {
-            // db parameters
-            String url = "jdbc:sqlite:/home/oem/Downloads/kllbill.db";
-            // create a connection to the database
+            String url = "jdbc:sqlite:/home/quatro/dss/bd.db";
             conn = DriverManager.getConnection(url);
-            
-            System.out.println("Connection to SQLite has been established.");
-            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -34,7 +22,3 @@ public class Connect {
         return conn;
     }
 }
-    /**
-     * @param args the command line arguments
-     */
-  
