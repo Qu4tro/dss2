@@ -5,10 +5,16 @@
  */
 package swing;
 
+import Classes.Despesa;
 import Classes.Grupo;
 import Classes.KillBill;
 import java.awt.Frame;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +24,7 @@ public class MenuGrupo extends javax.swing.JFrame {
 
     private KillBill k;
     private String grupo;
+    private DefaultTableModel tb;
     
     /**
      * Creates new form MenuGrupo
@@ -27,6 +34,7 @@ public class MenuGrupo extends javax.swing.JFrame {
         this.k = k;
         this.grupo = g;
         updateList();
+        tableFiller();
     }
 
 
@@ -262,6 +270,28 @@ public class MenuGrupo extends javax.swing.JFrame {
     }
    
 
+    public void tableFiller(){
+        jtHistorico.setModel(tb);
+        jScrollPane1.setViewportView(jtHistorico);
+        String colunas [] = {"Descrição","Participantes","Valor"};
+        tb = new DefaultTableModel(colunas,0){
+                @Override
+                public boolean isCellEditable (int row, int column){
+                    return false;
+                }
+        };
+        
+        List<Despesa> hs = new ArrayList(k.grupos.get(grupo).listarDespesas());
+        
+        for (Despesa d : hs){
+            String nome = d.getDescricao();
+            Float valor = d.getValor();
+            Object[] ln = {nome, "teste", valor};
+            tb.addRow(ln);
+        }
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAddmembro;
     private javax.swing.JButton jButton1;
