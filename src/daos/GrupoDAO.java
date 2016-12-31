@@ -55,7 +55,7 @@ public class GrupoDAO {
         Connection c = Connect.connect();
         try {
             PreparedStatement prep = c.prepareStatement(
-                    "INSERT `Grupo` VALUES (?, ?)"
+                    "INSERT OR REPLACE INTO `Grupo` VALUES (?, ?)"
             );
 
             prep.setString(1,nome);
@@ -152,7 +152,7 @@ public class GrupoDAO {
             set = prep.executeQuery();
 
             while (set.next()){
-                Despesa d = DespesasDAO.getDespesa(set.getInt(1));
+                Despesa d = DespesaDAO.getDespesa(set.getInt(1));
                 historico.add(d);
             }
 
