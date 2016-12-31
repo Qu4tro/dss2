@@ -55,7 +55,7 @@ public class GrupoDAO {
         return grupos;
     }
 
-    public boolean addGrupo(String nome, Utilizador moderador){
+    public static boolean addGrupo(String nome, Utilizador moderador){
         Connection c = Connect.connect();
         try {
             PreparedStatement prep = c.prepareStatement(
@@ -81,7 +81,7 @@ public class GrupoDAO {
         return true;
     }
 
-    public boolean addUtilizadorToGrupo(Utilizador u, Grupo g){
+    public static boolean addUtilizadorToGrupo(Utilizador u, Grupo g){
         Connection c = Connect.connect();
         try {
             PreparedStatement prep = c.prepareStatement(
@@ -108,7 +108,7 @@ public class GrupoDAO {
     }
     
     
-    public List<Utilizador> getListaMembros (Integer id){
+    public static List<Utilizador> getListaMembros (Integer id){
         ArrayList<Utilizador> membros = new ArrayList<>();
         Connection c = Connect.connect();
         ResultSet set = null;
@@ -123,7 +123,7 @@ public class GrupoDAO {
             set = prep.executeQuery();
 
             while (set.next()){
-                Utilizador user = UtilizadorDAO.getUtilizador(set.getString(1));
+                Utilizador user = UtilizadorDAO.getUtilizador(set.getInt(1));
                 membros.add(user);
             }
 
