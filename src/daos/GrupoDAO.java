@@ -13,12 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * Created by quatro on 30/12/16.
- */
 public class GrupoDAO {
-
-    
     
     public static Map<String, Grupo> getGrupos(String user){
 

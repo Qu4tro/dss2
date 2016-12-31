@@ -11,9 +11,46 @@ import java.util.stream.Collectors;
 
 public class DespesaDAO {
 
+    public static Despesa getDespesa(Integer id){
+        Connection c = Connect.connect();
+        ResultSet set = null;
+
+        Despesa d = new Despesa();
+        try {
+            PreparedStatement prep = c.prepareStatement(
+                    "SELECT rowid, * FROM Despesa",
+                    ResultSet.TYPE_FORWARD_ONLY,
+                    ResultSet.CONCUR_READ_ONLY
+            );
+            set = prep.executeQuery();
+
+            while (set.next()) {
+                d.setID(set.getInt(1));
+                d.setDescricao(set.getString(2));
+                d.setValor(set.getFloat(3));
+                d.setResponsavel(UtilizadorDAO.getUtilizador(set.getInt(4)).getNickname());
+                d.setDataCriacao(set.getString(5));
+                d.setDataDespesa(Utils.parseData(set.getString(6)));
+            }
+
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+        } finally{
+            try {
+                set.close();
+                c.close();
+            } catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return d;
+    }
+
     public static Map<Integer, Despesa> getDespesas(Map<String, Utilizador> users){
         Connection c = Connect.connect();
         ResultSet set = null;
+
         Map<Integer, Despesa> despesas = new HashMap<>();
         Map<Integer, String> idUsers = users.entrySet()
                                             .stream()
@@ -59,14 +96,12 @@ public class DespesaDAO {
 
 
     public static boolean addDespesa(Despesa despesa){
-
         Connection c = Connect.connect();
 
         try {
             PreparedStatement prep = c.prepareStatement(
                     "INSERT INTO `Despesa` VALUES (?, ?, ?, ?, ?, ?)"
             );
-
             prep.setString(1,despesa.getDescricao());
             prep.setString(2,despesa.getValor().toString());
             prep.setString(3,despesa.getResponsavel());
