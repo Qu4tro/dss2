@@ -27,13 +27,14 @@ public class KillBill {
     public KillBill(){
         this.users = new HashMap<>();
         this.grupos = new HashMap<>();
-        Utilizador u = new Utilizador("manuel","","12345","");
+        Utilizador u = new Utilizador("manuel","Teste","12345","teeeste");
         Grupo b = new Grupo ("Principal");
         loggedUser = u;
         b.addMembro(u);
         this.users.put("manuel",u);
         this.grupos.put("Principal", b);
     }
+   
 
   /*  public int getIntLogin(String email, String pass) throws SQLException {
     
@@ -70,6 +71,15 @@ public class KillBill {
                     .filter(u -> u.getPassword().equals(password))
                     .orElse(null);
 
+        // ADD cenas da base de dados referentes ao utilizador para o grupos e users.
+        
+        
+        
+        
+        // percorrer lista de grupos do utilizador
+            // lista de membros
+                
+       
         return (loggedUser != null);
     }
     
@@ -102,4 +112,5 @@ public class KillBill {
         }
         return res;
     }
+   
 }

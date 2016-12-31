@@ -243,7 +243,7 @@ public class MenuGrupo extends javax.swing.JFrame {
     }//GEN-LAST:event_jbPerfilActionPerformed
 
     private void jAddmembroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddmembroActionPerformed
-        new AdicionarMembro(this,true,this.k).setVisible(true);
+        new AdicionarMembro(this,true,this.k,grupo).setVisible(true);
     }//GEN-LAST:event_jAddmembroActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

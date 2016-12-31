@@ -18,9 +18,12 @@ public class CriarGrupo extends javax.swing.JDialog {
 
     
     private KillBill k;
-    private Frame parent;
+    private final Frame parent;
     /**
      * Creates new form CriarGrupo
+     * @param parent
+     * @param modal
+     * @param k
      */
     public CriarGrupo(java.awt.Frame parent, boolean modal,KillBill k) {
         super(parent, modal);
@@ -128,6 +131,7 @@ public class CriarGrupo extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nome = jTextField1.getText();
         if(k.adicionarGrupo(nome)){
+            this.parent.revalidate();
             JOptionPane.showMessageDialog(null,"Grupo criado");
             this.dispose();
         }

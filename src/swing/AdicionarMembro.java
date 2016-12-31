@@ -6,7 +6,9 @@
 package swing;
 
 import Classes.KillBill;
+import Classes.Utilizador;
 import java.awt.Frame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,13 +19,15 @@ public class AdicionarMembro extends javax.swing.JDialog {
     
     private KillBill k;
     private Frame parent;
+    private String grupo;
     /**
      * Creates new form AdicionarMembro
      */
-    public AdicionarMembro(java.awt.Frame parent, boolean modal,KillBill k) {
+    public AdicionarMembro(java.awt.Frame parent, boolean modal,KillBill k,String grupo) {
         super(parent, modal);
         this.k = k;
         this.parent = (Frame) parent;
+        this.grupo = grupo;
         initComponents();
     }
 
@@ -39,7 +43,7 @@ public class AdicionarMembro extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jNome = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
@@ -53,9 +57,16 @@ public class AdicionarMembro extends javax.swing.JDialog {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Adicionar membro");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jNome.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                jNomeCaretPositionChanged(evt);
+            }
+        });
+        jNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jNomeActionPerformed(evt);
             }
         });
 
@@ -87,7 +98,7 @@ public class AdicionarMembro extends javax.swing.JDialog {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jNome, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(126, 126, 126))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
@@ -111,7 +122,7 @@ public class AdicionarMembro extends javax.swing.JDialog {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jNome, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -122,17 +133,36 @@ public class AdicionarMembro extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jNomeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String nome = this.jNome.getText();
+        if (this.k.users.containsKey(nome)){
+            Utilizador u = this.k.users.get(nome);
+            if (this.k.grupos.get(this.grupo).adicionarUtilizador(u)){
+                JOptionPane.showMessageDialog(null,"Utilizador adicionado");
+                this.dispose();
+            }
+            else {
+                JOptionPane.showMessageDialog(null,"Utilizador já no grupo");
+                this.dispose();
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Utilizador não existente");
+            this.jNome.setText("");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jNomeCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jNomeCaretPositionChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jNomeCaretPositionChanged
 
     /**
      * @param args the command line arguments
@@ -144,9 +174,9 @@ public class AdicionarMembro extends javax.swing.JDialog {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jNome;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
   
