@@ -38,6 +38,7 @@ public class GrupoDAO {
                 grupo.setNome(set.getString(2));
                 grupo.setModerador(set.getString(3));
                 //despesas.getDespesas(utilizadores.getUtilizadores());
+
                 grupos.put(grupo.getNome(), grupo);
             }
 
@@ -108,7 +109,7 @@ public class GrupoDAO {
     }
     
     
-    public List<Utilizador> getListaMembros (Integer id){
+    public static List<Utilizador> getListaMembros (Integer id){
         ArrayList<Utilizador> membros = new ArrayList<>();
         Connection c = Connect.connect();
         ResultSet set = null;
