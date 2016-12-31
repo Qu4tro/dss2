@@ -74,7 +74,7 @@ public class KillBill {
         // ADD cenas da base de dados referentes ao utilizador para o grupos e users.
         
         
-        
+       
         
         // percorrer lista de grupos do utilizador
             // lista de membros
@@ -86,6 +86,8 @@ public class KillBill {
     public List<String> getGrupos(String user){
         //    return users.get(user).getGrupos().stream().map(Grupo::getNome).collect(Collectors.toList());
         Map<String, Grupo> grupos = GrupoDAO.getGrupos(user);
+        if(grupos == null)
+            System.out.println("Teste");
         this.grupos = grupos;
         return grupos.keySet()
                      .stream()
