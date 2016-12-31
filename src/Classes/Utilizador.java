@@ -26,7 +26,7 @@ import java.util.List;
     }
 
     public Utilizador(String nickname,String email,String password,String iban){
-        this.avatar = null;
+        this.avatar = "";
         this.nick = nickname;
         this.password = password;
         this.email=email;

@@ -14,10 +14,10 @@ import java.util.Set;
 public class Grupo{
     
     // Variaveis de Instância
-    public Utilizador moderador;
-    public List<Utilizador> membros;
-    public String nome;
-    public List<Despesa> historico;
+    private Utilizador moderador;
+    private List<Utilizador> membros;
+    private String nome ;
+    private List<Despesa> historico;
        
 
     // Construtores
