@@ -1,39 +1,38 @@
 
 package Classes;
 
-import javax.rmi.CORBA.Util;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
  public class Utilizador {
 
-     private int id;
-     private String nick;
-     private String avatar;
-     private String iban;
-     private String password;
-     private String email;
-     private List<Grupo> grupos;
+    public int id;
+    public String nick;
+    public String avatar;
+    public String iban;
+    public String password;
+    public String email;
+    public List<Pagamento> pagamentos;
 
     public Utilizador(){
-        this.grupos = new ArrayList<>();
     }
- 
+
+
     public Utilizador(String nick, String email) {
         this.nick = nick;
         this.email = email;
-        this.grupos = new ArrayList<>();
+        this.pagamentos = new ArrayList<>();
     }
 
-    public Utilizador(String nickname,String email,String password,String iban){
+    public Utilizador(String nickname,String email,String password,String iban) {
         this.avatar = "";
         this.nick = nickname;
         this.password = password;
-        this.email=email;
+        this.email = email;
         this.iban = iban;
-        this.grupos = new ArrayList<>();
+        this.pagamentos = new ArrayList<>();
     }
-
 
      // Metodos
 
@@ -84,24 +83,8 @@ import java.util.List;
     public void setIBAN(String iban){
 		this.iban = iban;
 	}
-    
-    public List<Grupo> getGrupos(){
-        return new ArrayList<>(grupos);
-    }
-    
-    public Grupo getGrupo1(){
-        Grupo u = new Grupo();
-        if(grupos!=null){
-            u = grupos.get(0);
-        }
-        return u;
-        
-    }
-    public void addGrupo(Grupo g){
-        this.grupos.add(g);
-    
-    }
-    public int getSize(){
-        return grupos.size();
+
+	public void addPag(Pagamento p){
+        pagamentos.add(p);
     }
  }

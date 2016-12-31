@@ -8,7 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -16,23 +18,22 @@ import java.util.stream.Collectors;
  */
 public class GrupoDAO {
 
-    public static List<String> getGrupos(String user){
+    public static Map<String, Grupo> getGrupos(String user){
 
-        List<String> nomesGrupos = new ArrayList<>();
-
+        Map<String, Grupo> grupos = new HashMap<>();
         Connection c = Connect.connect();
         ResultSet set = null;
 
         try {
             PreparedStatement prep = c.prepareStatement(
-                    "SELECT * FROM GrupoUtilizador WHERE Utilizador = ?"
+                    "SELECT * FROM Grupo"
             );
-
-            prep.setString(1,user);
             set = prep.executeQuery();
 
             while (set.next()){
-                nomesGrupos.add(set.getString(1));
+                Grupo grupo = new Grupo();
+                grupo.setNome(set.getString(1));
+                grupo.setModerador(set.getString(2));
             }
 
         } catch(SQLException e){
@@ -42,10 +43,10 @@ public class GrupoDAO {
                 set.close();
                 c.close();
             } catch(Exception e){
-                System.out.printf(e.getMessage());
+                System.out.println(e.getMessage());
             }
         }
 
-        return nomesGrupos;
+        return grupos;
     }
 }

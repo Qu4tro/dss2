@@ -6,6 +6,7 @@ import java.util.Map;
 public class Despesa {
 
     // Variaveis de Instância
+    private Integer id;
     private String descricao;
     private GregorianCalendar dataCriacao;
     private GregorianCalendar dataDespesa;
@@ -17,7 +18,12 @@ public class Despesa {
     private Map<String, Float> racioPagamentoDevido;
 
     // Construtores
-    public Despesa(String descricao, Float valor, Utilizador responsavel,
+
+    public Despesa(){
+
+    }
+
+    public Despesa(String descricao, Float valor, String responsavel,
                    GregorianCalendar dataCriacao, GregorianCalendar dataDespesa) {
         setDescricao(descricao);
         setValor(valor);
@@ -31,6 +37,14 @@ public class Despesa {
     // Metodos
     public void eliminarDespesa() {
 
+    }
+
+    public int getID(){
+        return id;
+    }
+
+    public void setID(Integer id){
+        this.id = id;
     }
 
     public String getDescricao() {
@@ -53,8 +67,8 @@ public class Despesa {
         return responsavel;
     }
 
-    public void setResponsavel(Utilizador user) {
-        this.responsavel = user.getNickname();
+    public void setResponsavel(String user) {
+        this.responsavel = user;
     }
 
     public GregorianCalendar getDataCriacao() {

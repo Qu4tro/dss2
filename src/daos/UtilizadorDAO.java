@@ -2,7 +2,6 @@ package daos;
 
 import Classes.Utilizador;
 
-import javax.rmi.CORBA.Util;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +15,7 @@ public class UtilizadorDAO {
         Utilizador user = new Utilizador();
         user.setID(set.getInt(1));
         user.setNickname(set.getString(2));
-        user.setAvatar(set.getString(3));
+        user.setAvatar(set.getString(4));
         user.setEmail(set.getString(4));
         user.setPassword(set.getString(5));
         user.setIBAN(set.getString(6));
@@ -24,12 +23,12 @@ public class UtilizadorDAO {
         return user;
     }
 
-    public static Map<Integer, Utilizador> getUtilizadores(String nickname){
+    public static Map<String, Utilizador> getUtilizadores(){
         Connection c = Connect.connect();
         ResultSet set = null;
-        Utilizador user = null;
+        Utilizador user;
 
-        Map<Integer, Utilizador> users = new HashMap<>();
+        Map<String, Utilizador> users = new HashMap<>();
         try {
             PreparedStatement prep = c.prepareStatement(
                     "SELECT rowid, * FROM Utilizador",
@@ -40,7 +39,7 @@ public class UtilizadorDAO {
 
             while (set.next()) {
                 user = rowToUtilizador(set);
-                users.put(user.getID(), user);
+                users.put(user.getNickname(), user);
             }
 
         } catch(SQLException e){
@@ -62,7 +61,7 @@ public class UtilizadorDAO {
     }
     public static Utilizador getUtilizador(String nome){
 
-        boolean in = false;
+        boolean in;
         Connection c = Connect.connect();
         ResultSet set = null;
         Utilizador user = null;
