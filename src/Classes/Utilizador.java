@@ -1,6 +1,7 @@
 
 package Classes;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,4 +83,8 @@ import java.util.List;
     public void setIBAN(String iban){
 		this.iban = iban;
 	}
+
+	public void addPag(Pagamento p){
+        pagamentos.add(p);
+    }
  }
