@@ -18,6 +18,8 @@ import java.util.stream.Collectors;
  */
 public class GrupoDAO {
 
+    
+    
     public static Map<String, Grupo> getGrupos(String user){
 
         Map<String, Grupo> grupos = new HashMap<>();
@@ -34,6 +36,7 @@ public class GrupoDAO {
                 Grupo grupo = new Grupo();
                 grupo.setNome(set.getString(1));
                 grupo.setModerador(set.getString(2));
+                //despesas.getDespesas(utilizadores.getUtilizadores());
                 grupos.put(grupo.getNome(), grupo);
             }
 

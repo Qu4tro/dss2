@@ -67,11 +67,10 @@ public class KillBill {
 
         // ADD cenas da base de dados referentes ao utilizador para o grupos e users.
         
-        
-       
-        
-        // percorrer lista de grupos do utilizador
-            // lista de membros
+        if (loggedUser != null){
+            users.putAll(UtilizadorDAO.getUtilizadores());
+            grupos.putAll(GrupoDAO.getGrupos(loggedUser.getNickname()));
+        }
                 
        
         return (loggedUser != null);

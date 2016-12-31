@@ -6,7 +6,9 @@
 package swing;
 
 import Classes.KillBill;
+import daos.UtilizadorDAO;
 import java.awt.Frame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -204,6 +206,11 @@ public class Perfil extends javax.swing.JDialog {
         });
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -308,6 +315,30 @@ public class Perfil extends javax.swing.JDialog {
         this.jtPassword.setEditable(true);
         this.jtPassword.setText(this.k.loggedUser.getPassword());
     }//GEN-LAST:event_jbEditarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        String nome = jtNome.getText();
+        String password = jtPassword.getText();
+        String iban = jtIBAN.getText();
+        String email = jtEmail.getText();
+        
+        if(!k.users.containsKey(nome)){
+            
+            this.k.loggedUser.setNickname(nome);
+            this.k.loggedUser.setEmail(email);
+            this.k.loggedUser.setIBAN(iban);
+            this.k.loggedUser.setPassword(password);
+            
+            UtilizadorDAO.addUtilizador(this.k.loggedUser);
+            
+            JOptionPane.showMessageDialog(null,"Informações alteradas");
+            this.dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Nome já em uso");
+            jtNome.setText(this.k.loggedUser.getNickname());
+        }
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
