@@ -99,10 +99,9 @@ public class UtilizadorDAO {
     public static void addUtilizador(Utilizador utilizador){
 
         Connection c = Connect.connect();
-
         try {
             PreparedStatement prep = c.prepareStatement(
-                    "INSERT INTO `Utilizador` VALUES (?, ?, ?, ?, ?)"
+                    "INSERT OR REPLACE INTO `Utilizador` VALUES (?, ?, ?, ?, ?)"
             );
 
             prep.setString(1,utilizador.getNickname());

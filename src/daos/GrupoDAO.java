@@ -53,4 +53,50 @@ public class GrupoDAO {
 
         return grupos;
     }
+
+    public void addGrupo(String nome, Utilizador moderador){
+        Connection c = Connect.connect();
+        try {
+            PreparedStatement prep = c.prepareStatement(
+                    "INSERT `Grupo` VALUES (?, ?)"
+            );
+
+            prep.setString(1,nome);
+            prep.setString(2,moderador.getID().toString());
+
+            prep.executeUpdate();
+
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+        } finally{
+            try {
+                c.close();
+            } catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public void addUtilizadorToGrupo(Utilizador u, Grupo g){
+        Connection c = Connect.connect();
+        try {
+            PreparedStatement prep = c.prepareStatement(
+                    "INSERT `GrupoUtilizador` VALUES (?, ?)"
+            );
+
+            prep.setString(1,u.getID().toString());
+            prep.setString(2,g.getID().toString());
+
+            prep.executeUpdate();
+
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+        } finally{
+            try {
+                c.close();
+            } catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 }
