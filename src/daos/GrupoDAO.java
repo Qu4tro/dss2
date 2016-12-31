@@ -37,7 +37,7 @@ public class GrupoDAO {
                 grupo.setID(set.getInt(1));
                 grupo.setNome(set.getString(2));
                 grupo.setModerador(set.getString(3));
-                //despesas.getDespesas(utilizadores.getUtilizadores());
+                getListaMembros(grupo.getID()).stream().forEach(membro -> grupo.addMembro(membro));
                 grupos.put(grupo.getNome(), grupo);
             }
 
