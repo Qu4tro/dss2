@@ -14,6 +14,8 @@ class Connect {
         Connection conn = null;
         try {
             String url = "jdbc:sqlite:/home/oem/Desktop/trabalho/projecto/bd.db";
+            url = "jdbc:sqlite:/home/quatro/dss/bd.db";
+
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
             System.out.println(e.getMessage());

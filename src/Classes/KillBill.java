@@ -75,9 +75,11 @@ public class KillBill {
     
     public List<String> getGrupos(String user){
         //    return users.get(user).getGrupos().stream().map(Grupo::getNome).collect(Collectors.toList());
-        return GrupoDAO.getGrupos(user).keySet()
-                                       .stream()
-                                       .collect(Collectors.toList());
+        Map<String, Grupo> grupos = GrupoDAO.getGrupos(user);
+        this.grupos = grupos;
+        return grupos.keySet()
+                     .stream()
+                     .collect(Collectors.toList());
     }
     
     public Grupo getGrupo(String nome){

@@ -28,14 +28,12 @@ public class GrupoDAO {
             PreparedStatement prep = c.prepareStatement(
                     "SELECT * FROM Grupo"
             );
-
-            prep.setString(1,user);
             set = prep.executeQuery();
 
             while (set.next()){
                 Grupo grupo = new Grupo();
-                grupo.setNome(set.getString(2));
-                grupo.setModerador(set.getString(3));
+                grupo.setNome(set.getString(1));
+                grupo.setModerador(set.getString(2));
             }
 
         } catch(SQLException e){
@@ -45,7 +43,7 @@ public class GrupoDAO {
                 set.close();
                 c.close();
             } catch(Exception e){
-                System.out.printf(e.getMessage());
+                System.out.println(e.getMessage());
             }
         }
 
