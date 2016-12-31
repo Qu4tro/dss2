@@ -24,7 +24,21 @@ public class Perfil extends javax.swing.JDialog {
         this.k = k;
         this.parent = parent;
         initComponents();
+        startPerfil(this.k);
     }
+    
+    public void startPerfil(KillBill k){
+        this.jbGuardar.setVisible(false);
+        this.jtEmail.setEditable(false);
+        this.jtIBAN.setEditable(false);
+        this.jtPassword.setEditable(false);
+        this.jLabel2.setText(k.loggedUser.getNickname());
+        this.jtNome.setText(k.loggedUser.getNickname());
+        this.jtEmail.setText(k.loggedUser.getEmail());
+        this.jtPassword.setText("************");
+        this.jtIBAN.setText(k.loggedUser.getIBAN());
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,6 +71,7 @@ public class Perfil extends javax.swing.JDialog {
         jtIBAN = new javax.swing.JTextField();
         jbEditar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jbGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -175,6 +190,11 @@ public class Perfil extends javax.swing.JDialog {
         );
 
         jbEditar.setText("Editar");
+        jbEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEditarActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -182,6 +202,8 @@ public class Perfil extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jbGuardar.setText("Guardar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -192,17 +214,20 @@ public class Perfil extends javax.swing.JDialog {
                 .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDesktopPane4)
-                            .addComponent(jDesktopPane3)
-                            .addComponent(jDesktopPane1)
-                            .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(jButton1)
+                                .addGap(33, 33, 33))
+                            .addComponent(jDesktopPane4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDesktopPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDesktopPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jButton1)
-                        .addGap(43, 43, 43))))
+                        .addComponent(jbGuardar)
+                        .addGap(115, 115, 115))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,11 +242,13 @@ public class Perfil extends javax.swing.JDialog {
                 .addComponent(jDesktopPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jDesktopPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jbEditar))
-                .addGap(35, 35, 35))
+                    .addComponent(jbEditar)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbGuardar)
+                .addGap(6, 6, 6))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -273,6 +300,15 @@ public class Perfil extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+        this.jbGuardar.setVisible(true);
+        this.jtNome.setEditable(true);
+        this.jtEmail.setEditable(true);
+        this.jtIBAN.setEditable(true);
+        this.jtPassword.setEditable(true);
+        this.jtPassword.setText(this.k.loggedUser.getPassword());
+    }//GEN-LAST:event_jbEditarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -288,6 +324,7 @@ public class Perfil extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbEditar;
+    private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbMudarFoto;
     private javax.swing.JLabel jlEmailEsq;
     private javax.swing.JLabel jlIbanEsq;

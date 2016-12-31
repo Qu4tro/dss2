@@ -8,6 +8,7 @@ package swing;
 import Classes.KillBill;
 import java.awt.Frame;
 import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -288,6 +289,7 @@ public class NovaDespesa extends javax.swing.JDialog {
                         Integer.parseInt(jTextField3.getText())
                 )
         );
+        JOptionPane.showMessageDialog(null,"Despesa criada");
         this.dispose();
     }//GEN-LAST:event_jbCriarDespesaActionPerformed
 

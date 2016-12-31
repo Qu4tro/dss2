@@ -27,7 +27,7 @@ public class KillBill {
     public KillBill(){
         this.users = new HashMap<>();
         this.grupos = new HashMap<>();
-        Utilizador u = new Utilizador("manuel","","12345","");
+        Utilizador u = new Utilizador("manuel","Teste","12345","teeeste");
         Grupo b = new Grupo ("Principal");
         loggedUser = u;
         u.addGrupo(b);
@@ -112,4 +112,5 @@ public class KillBill {
         }
         return res;
     }
+   
 }
