@@ -14,6 +14,7 @@ public class DespesaDAO {
     public static Despesa getDespesa(Integer id){
         Connection c = Connect.connect();
         ResultSet set = null;
+        boolean in;
 
         Despesa d = new Despesa();
         try {
@@ -24,7 +25,8 @@ public class DespesaDAO {
             );
             set = prep.executeQuery();
 
-            while (set.next()) {
+            in = set.next();
+            if (in){
                 d.setID(set.getInt(1));
                 d.setDescricao(set.getString(2));
                 d.setValor(set.getFloat(3));
@@ -100,7 +102,7 @@ public class DespesaDAO {
 
         try {
             PreparedStatement prep = c.prepareStatement(
-                    "INSERT INTO `Despesa` VALUES (?, ?, ?, ?, ?, ?)"
+                    "INSERT INTO `Despesa` VALUES (?, ?, ?, ?, ?, ?, ?)"
             );
             prep.setString(1,despesa.getDescricao());
             prep.setString(2,despesa.getValor().toString());
@@ -108,6 +110,7 @@ public class DespesaDAO {
             prep.setString(4,Utils.formatGreg(despesa.getDataCriacao()));
             prep.setString(5,despesa.getDataCriacao().toString());
             prep.setString(6,despesa.getTempoDeRecurrencia().toString());
+            prep.setString(7,despesa.getGrupo().toString());
 
             prep.executeUpdate();
 

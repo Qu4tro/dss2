@@ -16,6 +16,7 @@ public class Despesa {
     private GregorianCalendar dataLimite;
     private Map<String, Float> racioPagamentoFeito;
     private Map<String, Float> racioPagamentoDevido;
+    private Integer grupo;
 
     // Construtores
 
@@ -126,5 +127,13 @@ public class Despesa {
 
     public void setDataLimite(String data) {
         dataLimite = Utils.parseData(data);
+    }
+
+    public void setGrupo(Integer id){
+        grupo = id;
+    }
+
+    public Integer getGrupo(){
+        return grupo;
     }
 }

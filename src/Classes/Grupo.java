@@ -100,8 +100,8 @@ public class Grupo{
         }
         
         
-        public ArrayList<Despesa> listarDespesas (){
-		return new ArrayList<>(this.historico);
-	}
+        public List<Despesa> listarDespesas (){
+		    return this.historico;
+	    }
 
 }

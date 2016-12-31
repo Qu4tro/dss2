@@ -34,6 +34,7 @@ public class GrupoDAO {
                 grupo.setNome(set.getString(2));
                 grupo.setModerador(set.getString(3));
                 getListaMembros(grupo.getID()).stream().forEach(membro -> grupo.addMembro(membro));
+                getHistórico(grupo.getID()).stream().forEach(despesa -> grupo.adicionarDespesa(despesa));
                 grupos.put(grupo.getNome(), grupo);
             }
 
@@ -144,7 +145,7 @@ public class GrupoDAO {
 
         try {
             PreparedStatement prep = c.prepareStatement(
-                    "SELECT * FROM Historico where Historico.Grupo = ?"
+                    "SELECT * FROM Despesa where Despesa.Grupo = ?"
             );
             
             prep.setString(1,id.toString());

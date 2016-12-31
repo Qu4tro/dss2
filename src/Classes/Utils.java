@@ -10,7 +10,7 @@ public class Utils {
 
     public static String formatGreg(GregorianCalendar g){
         return g.get(GregorianCalendar.DAY_OF_MONTH) + " " +
-               g.get(GregorianCalendar.MONTH)        + " " +
+               g.get(GregorianCalendar.MONTH) + 1    + " " +
                g.get(GregorianCalendar.YEAR)         + " ";
     }
 

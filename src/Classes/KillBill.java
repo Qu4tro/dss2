@@ -99,6 +99,7 @@ public class KillBill {
         Despesa d = new Despesa(descricao, valor, responsavel.getNickname(), now, dataDespesa);
         Optional.ofNullable(grupos.get(grupo)).ifPresent(g ->
                 g.adicionarDespesa(d));
+        d.setGrupo(grupos.get(grupo).getID());
 
         DespesaDAO.addDespesa(d);
     }
