@@ -1,15 +1,12 @@
 
 package Classes;
 
-import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
  public class Utilizador {
      
-     
+    public int id;
     public String nick;
     public String avatar;
     public String iban;
@@ -30,7 +27,7 @@ import java.util.Map;
     }
 
     public Utilizador(String nickname,String email,String password,String iban){
-        this.avatar = null;
+        this.avatar = "";
         this.nick = nickname;
         this.password = password;
         this.email=email;
@@ -39,8 +36,17 @@ import java.util.Map;
         this.pagamentos = new ArrayList<>();
     }
 
-   
-	
+ 
+
+     // Metodos
+
+     public int getID(){
+        return id;
+     }
+
+     public void setID(int id){
+         this.id = id;
+     }
     
 	public String getNickname(){
 		return this.nick;	
