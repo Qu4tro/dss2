@@ -1,5 +1,6 @@
 package Classes;
 
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.util.GregorianCalendar;
 
 public class Pagamento {
@@ -16,7 +17,7 @@ public class Pagamento {
     public Pagamento(){
         
     }
-    public Pagamento(String data, int valor, String modo, String credor, String devedor) {
+    public Pagamento(String data, Integer valor, String modo, String credor, String devedor) {
 
         this.data = Utils.parseData(data); // Mudar, tem de se meter a exception
         this.valor_pago = valor;
