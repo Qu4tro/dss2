@@ -2,12 +2,60 @@ package daos;
 
 import Classes.Utilizador;
 
+import javax.rmi.CORBA.Util;
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by quatro on 30/12/16.
  */
 public class UtilizadorDAO {
+
+    private static Utilizador rowToUtilizador(ResultSet set) throws SQLException {
+        Utilizador user = new Utilizador();
+        user.setID(set.getInt(1));
+        user.setNickname(set.getString(2));
+        user.setAvatar(set.getString(3));
+        user.setEmail(set.getString(4));
+        user.setPassword(set.getString(5));
+        user.setIBAN(set.getString(6));
+
+        return user;
+    }
+
+    public static Map<Integer, Utilizador> getUtilizadores(String nickname){
+        Connection c = Connect.connect();
+        ResultSet set = null;
+        Utilizador user = null;
+
+        Map<Integer, Utilizador> users = new HashMap<>();
+        try {
+            PreparedStatement prep = c.prepareStatement(
+                    "SELECT rowid, * FROM Utilizador",
+                    ResultSet.TYPE_FORWARD_ONLY,
+                    ResultSet.CONCUR_READ_ONLY
+            );
+            set = prep.executeQuery();
+
+            while (set.next()) {
+                user = rowToUtilizador(set);
+                users.put(user.getID(), user);
+            }
+
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+        } finally{
+            try {
+                set.close();
+                c.close();
+            } catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return users;
+    }
 
     public static boolean existeUtilizador(String nome){
         return getUtilizador(nome) != null;
@@ -21,7 +69,7 @@ public class UtilizadorDAO {
 
         try {
             PreparedStatement prep = c.prepareStatement(
-                    "SELECT * FROM Utilizador WHERE Nickname = ?",
+                    "SELECT rowid, * FROM Utilizador WHERE Nickname = ?",
                     ResultSet.TYPE_FORWARD_ONLY,
                     ResultSet.CONCUR_READ_ONLY
             );
@@ -30,14 +78,8 @@ public class UtilizadorDAO {
             set = prep.executeQuery();
 
             in = set.next();
-
             if (in){
-                user = new Utilizador();
-                user.setNickname(set.getString(1));
-                user.setAvatar(set.getString(2));
-                user.setEmail(set.getString(3));
-                user.setPassword(set.getString(4));
-                user.setIBAN(set.getString(5));
+                user = rowToUtilizador(set);
             }
 
 

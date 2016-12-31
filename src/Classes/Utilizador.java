@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
  public class Utilizador {
-     
-     
-    public String nick;
-    public String avatar;
-    public String iban;
-    public String password;
-    public String email;
-    public List<Grupo> grupos;
+
+     private int id;
+     private String nick;
+     private String avatar;
+     private String iban;
+     private String password;
+     private String email;
+     private List<Grupo> grupos;
 
     public Utilizador(){
         this.grupos = new ArrayList<>();
@@ -26,7 +26,7 @@ import java.util.List;
     }
 
     public Utilizador(String nickname,String email,String password,String iban){
-        this.avatar = null;
+        this.avatar = "";
         this.nick = nickname;
         this.password = password;
         this.email=email;
@@ -34,16 +34,16 @@ import java.util.List;
         this.grupos = new ArrayList<>();
     }
 
-   
 
-       
- 
- 
      // Metodos
- 
 
-        
-	
+     public int getID(){
+        return id;
+     }
+
+     public void setID(int id){
+         this.id = id;
+     }
     
 	public String getNickname(){
 		return this.nick;	
