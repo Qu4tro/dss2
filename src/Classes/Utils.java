@@ -9,9 +9,9 @@ import java.util.TimeZone;
 public class Utils {
 
     public static String formatGreg(GregorianCalendar g){
-        SimpleDateFormat timeFormat = new SimpleDateFormat("dd-MM-yyyy");
-        timeFormat.setTimeZone(TimeZone.getTimeZone("WET"));
-        return timeFormat.format(g);
+        return g.get(GregorianCalendar.DAY_OF_MONTH) + " " +
+               g.get(GregorianCalendar.MONTH)        + " " +
+               g.get(GregorianCalendar.YEAR)         + " ";
     }
 
     public static GregorianCalendar dataAgora(){
