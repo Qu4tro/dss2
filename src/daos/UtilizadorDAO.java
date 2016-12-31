@@ -93,8 +93,44 @@ public class UtilizadorDAO {
                 System.out.println(e.getMessage());
             }
         }
-
         return user; }
+
+    public static Utilizador getUtilizador(Integer id){
+
+        boolean in;
+        Connection c = Connect.connect();
+        ResultSet set = null;
+        Utilizador user = null;
+
+        try {
+            PreparedStatement prep = c.prepareStatement(
+                    "SELECT rowid, * FROM Utilizador WHERE rowid = ?",
+                    ResultSet.TYPE_FORWARD_ONLY,
+                    ResultSet.CONCUR_READ_ONLY
+            );
+
+            prep.setString(1,id.toString());
+            set = prep.executeQuery();
+
+            in = set.next();
+            if (in){
+                user = rowToUtilizador(set);
+            }
+
+
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+        } finally{
+            try {
+                set.close();
+                c.close();
+            } catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return user;
+    }
 
     public static void addUtilizador(Utilizador utilizador){
 

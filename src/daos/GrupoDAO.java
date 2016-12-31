@@ -123,7 +123,7 @@ public class GrupoDAO {
             set = prep.executeQuery();
 
             while (set.next()){
-                Utilizador user = UtilizadorDAO.getUtilizador(set.getString(1));
+                Utilizador user = UtilizadorDAO.getUtilizador(set.getInt(1));
                 membros.add(user);
             }
 
