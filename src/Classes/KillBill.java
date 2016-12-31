@@ -5,8 +5,10 @@
  */
 package Classes;
 
+import daos.DespesaDAO;
 import daos.GrupoDAO;
 import daos.UtilizadorDAO;
+import sun.security.krb5.internal.crypto.Des;
 
 import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
@@ -94,8 +96,11 @@ public class KillBill {
     public void adicionarDespesa(String grupo, Utilizador responsavel, String descricao, Float valor,GregorianCalendar dataDespesa) {
 
         GregorianCalendar now = new GregorianCalendar();
+        Despesa d = new Despesa(descricao, valor, responsavel.getNickname(), now, dataDespesa);
         Optional.ofNullable(grupos.get(grupo)).ifPresent(g ->
-                g.adicionarDespesa(new Despesa(descricao, valor, responsavel.getNickname(), now, dataDespesa)));
+                g.adicionarDespesa(d));
+
+        DespesaDAO.addDespesa(d);
     }
 
     public boolean adicionarGrupo(String nome){
