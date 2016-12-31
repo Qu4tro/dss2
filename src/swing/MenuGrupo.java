@@ -252,6 +252,7 @@ public class MenuGrupo extends javax.swing.JFrame {
 
     private void jAddmembroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddmembroActionPerformed
         new AdicionarMembro(this,true,this.k,grupo).setVisible(true);
+        updateList();
     }//GEN-LAST:event_jAddmembroActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -271,7 +272,6 @@ public class MenuGrupo extends javax.swing.JFrame {
    
 
     public void tableFiller(){
-        jScrollPane1.setViewportView(jtHistorico);
         String colunas [] = {"Descrição","Participantes","Valor"};
         tb = new DefaultTableModel(colunas,0){
                 @Override
@@ -280,8 +280,9 @@ public class MenuGrupo extends javax.swing.JFrame {
                 }
         };
         jtHistorico.setModel(tb);
+        jScrollPane1.setViewportView(jtHistorico);
         List<Despesa> hs = new ArrayList(k.grupos.get(grupo).listarDespesas());
-        
+
         for (Despesa d : hs){
             String nome = d.getDescricao();
             Float valor = d.getValor();
