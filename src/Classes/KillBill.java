@@ -45,7 +45,9 @@ public class KillBill {
         return UtilizadorDAO.getUtilizadores();
     }
     
-    
+    public String getLog(){
+        return this.loggedUser.getNickname();
+    }
     public boolean registarUtilizadorNoDB (String nickname, String email, String password, String iban){
 
         if (UtilizadorDAO.existeUtilizador(nickname)){

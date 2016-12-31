@@ -4,9 +4,13 @@
  * and open the template in the editor.
  */
 package swing;
-
+import java.util.*;
+import Classes.Pagamento;
 import Classes.KillBill;
 import java.awt.Frame;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import static swing.Main.strToInt;
 
 /**
  *
@@ -16,6 +20,7 @@ public class RegistarPagamento extends javax.swing.JDialog {
 
     private KillBill k;
     private Frame parent;
+    public String s;
     /**
      * Creates new form RegistarPagamento
      */
@@ -24,6 +29,7 @@ public class RegistarPagamento extends javax.swing.JDialog {
         initComponents();
         this.k = k;
         this.parent = (Frame) parent;
+        
     }
 
     /**
@@ -40,11 +46,11 @@ public class RegistarPagamento extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jbRegistar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
+        jText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -75,11 +81,14 @@ public class RegistarPagamento extends javax.swing.JDialog {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Registar Pagamento");
 
-        jTextField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
         jLabel3.setText("para");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Joao","Jose" }));
+        jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox1MouseClicked(evt);
+            }
+        });
 
         jbRegistar.setText("Registar");
         jbRegistar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +104,12 @@ public class RegistarPagamento extends javax.swing.JDialog {
             }
         });
 
+        jText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -106,16 +121,16 @@ public class RegistarPagamento extends javax.swing.JDialog {
                         .addGap(236, 236, 236)
                         .addComponent(jLabel3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jbRegistar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jbCancelar))
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addComponent(jText, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -123,11 +138,11 @@ public class RegistarPagamento extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jText, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addGap(37, 37, 37)
+                .addGap(31, 31, 31)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -155,12 +170,43 @@ public class RegistarPagamento extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistarActionPerformed
-        this.dispose();
+        
+      try{
+          String a = k.getLog();
+          int valor = strToInt(a);
+          if(valor != 0){
+          Pagamento p = new Pagamento(valor,s,a);
+          this.k.users.get(a).addPag(p);
+           JOptionPane.showMessageDialog(null, "Valor adicionado");
+           this.dispose();}
+          
+          
+      }
+      catch(Exception e){ JOptionPane.showMessageDialog(null, "Falha no valor");}
+      
+        if(jText.getText()==""){
+             JOptionPane.showMessageDialog(null, "Registar Valor");
+        }
+        
+        
     }//GEN-LAST:event_jbRegistarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextActionPerformed
+
+    private void jComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseClicked
+        JList list = (JList) evt.getSource();
+        s = (String) list.getSelectedValue();
+        
+        
+        
+        
+    }//GEN-LAST:event_jComboBox1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -175,7 +221,7 @@ public class RegistarPagamento extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jText;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbRegistar;
     // End of variables declaration//GEN-END:variables

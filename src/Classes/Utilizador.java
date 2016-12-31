@@ -1,35 +1,37 @@
 
 package Classes;
 
-import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
 import java.util.List;
 
  public class Utilizador {
 
-     private int id;
-     private String nick;
-     private String avatar;
-     private String iban;
-     private String password;
-     private String email;
+    public int id;
+    public String nick;
+    public String avatar;
+    public String iban;
+    public String password;
+    public String email;
+    public List<Pagamento> pagamentos;
 
     public Utilizador(){
     }
- 
+
+
     public Utilizador(String nick, String email) {
         this.nick = nick;
         this.email = email;
+        this.pagamentos = new ArrayList<>();
     }
 
-    public Utilizador(String nickname,String email,String password,String iban){
+    public Utilizador(String nickname,String email,String password,String iban) {
         this.avatar = "";
         this.nick = nickname;
         this.password = password;
-        this.email=email;
+        this.email = email;
         this.iban = iban;
+        this.pagamentos = new ArrayList<>();
     }
-
 
      // Metodos
 
@@ -80,5 +82,4 @@ import java.util.List;
     public void setIBAN(String iban){
 		this.iban = iban;
 	}
-
  }
