@@ -10,6 +10,7 @@ import java.util.Map;
  * Created by quatro on 30/12/16.
  */
 public class UtilizadorDAO {
+    
 
     private static Utilizador rowToUtilizador(ResultSet set) throws SQLException {
         Utilizador user = new Utilizador();

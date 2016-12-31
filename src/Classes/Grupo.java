@@ -92,9 +92,9 @@ public class Grupo{
             historico.add(d);
         }
         
-/*	public ArrayList<Despesa> listarDespesas (){
+        
+        public ArrayList<Despesa> listarDespesas (){
 		return new ArrayList<>(this.historico);
 	}
 
-       }*/
 }
