@@ -7,6 +7,10 @@ import java.util.GregorianCalendar;
 
 public class Utils {
 
+    public static String dataAgora(){
+        return "";
+    }
+
     public static GregorianCalendar parseData(String dd_mm_yy) {
         SimpleDateFormat fmt = new SimpleDateFormat("dd-MMM-yyyy");
         Date date;
