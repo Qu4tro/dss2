@@ -6,9 +6,10 @@ import java.util.GregorianCalendar;
 public class Pagamento {
 
     // Variaveis de instância
+    private Integer id;
     private String modalidade;
     private GregorianCalendar data;
-    private int valor_pago;
+    private Integer valor_pago;
     private String credor;
     private String devedor;
 
@@ -39,6 +40,14 @@ public class Pagamento {
         return false;
     }
 
+    public Integer getID(){
+        return id;
+    }
+
+    public void setID(Integer id){
+        this.id = id;
+    }
+
     public GregorianCalendar getData() {
         return this.data;
     }
@@ -47,11 +56,11 @@ public class Pagamento {
         this.data = data;
     }
 
-    public int getValor() {
+    public Integer getValor() {
         return this.valor_pago;
     }
 
-    public void setValor(int valor) {
+    public void setValor(Integer valor) {
         this.valor_pago = valor;
     }
 
