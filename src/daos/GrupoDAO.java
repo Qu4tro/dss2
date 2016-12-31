@@ -50,4 +50,12 @@ public class GrupoDAO {
 
         return grupos;
     }
+
+    public void addGrupo(){
+        //TODO
+    }
+
+    public void addUtilizadorToGrupo(){
+        //TODO
+    }
 }

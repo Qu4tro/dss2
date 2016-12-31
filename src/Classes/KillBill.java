@@ -34,13 +34,7 @@ public class KillBill {
         this.users.put("manuel",u);
         this.grupos.put("Principal", b);
     }
-   
 
-  /*  public int getIntLogin(String email, String pass) throws SQLException {
-    
-        int abc = NewClass.verificaLogin(email,pass);
-        return abc;
-    }*/
 
     public Map<String, Utilizador> getUsers() {
         return UtilizadorDAO.getUtilizadores();
