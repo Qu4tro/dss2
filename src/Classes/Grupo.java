@@ -14,6 +14,7 @@ import java.util.Set;
 public class Grupo{
     
     // Variaveis de Instância
+    private Integer id;
     private String moderador;
     private List<Utilizador> membros;
     private String nome ;
@@ -46,6 +47,14 @@ public class Grupo{
 		// todo DAO
 		return false;
 	}
+
+	public Integer getID(){
+	    return id;
+    }
+
+    public void setID(Integer id){
+	    this.id = id;
+    }
 
 	public String getNome (){
 		return this.nome;

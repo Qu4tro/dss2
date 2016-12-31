@@ -7,7 +7,7 @@ import java.util.List;
 
  public class Utilizador {
 
-    public int id;
+    public Integer id;
     public String nick;
     public String avatar;
     public String iban;
@@ -36,11 +36,11 @@ import java.util.List;
 
      // Metodos
 
-     public int getID(){
+     public Integer getID(){
         return id;
      }
 
-     public void setID(int id){
+     public void setID(Integer id){
          this.id = id;
      }
     
