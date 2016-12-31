@@ -72,7 +72,7 @@ public class PagamentoDAO {
                     "INSERT INTO `Pagamento` VALUES (?, ?, ?, ?, ?)"
             );
 
-            prep.setString(1, Utils.dataAgora());
+            prep.setString(1, Utils.formatGreg(Utils.dataAgora()));
             prep.setString(2, p.getValor().toString());
             prep.setString(3,"");
             prep.setString(4,idUsers.get(p.getCredor()).toString());

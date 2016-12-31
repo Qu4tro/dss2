@@ -43,10 +43,6 @@ public class Grupo{
 
     // Metodos
 
-	public boolean eliminarGrupo (){
-		// todo DAO
-		return false;
-	}
 
 	public Integer getID(){
 	    return id;

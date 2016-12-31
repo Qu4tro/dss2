@@ -4,11 +4,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 public class Utils {
 
-    public static String dataAgora(){
-        return "";
+    public static String formatGreg(GregorianCalendar g){
+        SimpleDateFormat timeFormat = new SimpleDateFormat("dd-MM-yyyy");
+        timeFormat.setTimeZone(TimeZone.getTimeZone("WET"));
+        return timeFormat.format(g);
+    }
+
+    public static GregorianCalendar dataAgora(){
+        return new GregorianCalendar();
     }
 
     public static GregorianCalendar parseData(String dd_mm_yy) {

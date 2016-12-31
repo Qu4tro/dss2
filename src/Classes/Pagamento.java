@@ -34,12 +34,6 @@ public class Pagamento {
     }
     //Metodos
 
-    
-    public boolean eliminarPagamento() {
-        // todo DAO
-        return false;
-    }
-
     public Integer getID(){
         return id;
     }

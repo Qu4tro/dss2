@@ -9,10 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * Created by quatro on 30/12/16.
- */
-
 public class DespesaDAO {
 
     public static Map<Integer, Despesa> getDespesas(Map<String, Utilizador> users){
@@ -74,8 +70,8 @@ public class DespesaDAO {
             prep.setString(1,despesa.getDescricao());
             prep.setString(2,despesa.getValor().toString());
             prep.setString(3,despesa.getResponsavel());
-            prep.setString(4,despesa.getDataCriacao().toString()); //TODO
-            prep.setString(5,despesa.getDataDespesa().toString());
+            prep.setString(4,Utils.formatGreg(despesa.getDataCriacao()));
+            prep.setString(5,despesa.getDataCriacao().toString());
             prep.setString(6,despesa.getTempoDeRecurrencia().toString());
 
             prep.executeUpdate();
