@@ -33,9 +33,11 @@ public class Grupo{
             this.membros = new ArrayList<>();
             this.nome = nome;
             this.historico = new ArrayList<>();
+
         }
         public Grupo (){
-            
+            this.historico = new ArrayList<>();
+            this.membros = new ArrayList<>();
         }
 
     // Metodos
