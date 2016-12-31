@@ -1,5 +1,6 @@
 package Classes;
 
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.util.GregorianCalendar;
 
 public class Pagamento {
@@ -7,13 +8,15 @@ public class Pagamento {
     // Variaveis de instância
     private String modalidade;
     private GregorianCalendar data;
-    private Float valor_pago;
+    private int valor_pago;
     private String credor;
     private String devedor;
 
     //Construtores
-
-    public Pagamento(String data, Float valor, String modo, String credor, String devedor) {
+    public Pagamento(){
+        
+    }
+    public Pagamento(String data, int valor, String modo, String credor, String devedor) {
 
         this.data = Utils.parseData(data); // Mudar, tem de se meter a exception
         this.valor_pago = valor;
@@ -21,10 +24,16 @@ public class Pagamento {
         this.credor = credor;
         this.devedor = devedor;
     }
-
+        public Pagamento (int v, String c, String d){
+       
+        this.valor_pago=v;
+        this.modalidade = "Internet";
+        this.credor = c;
+        this.devedor = d;
+    }
     //Metodos
 
-
+    
     public boolean eliminarPagamento() {
         // todo DAO
         return false;
@@ -38,11 +47,11 @@ public class Pagamento {
         this.data = data;
     }
 
-    public Float getValor() {
+    public int getValor() {
         return this.valor_pago;
     }
 
-    public void setValor(Float valor) {
+    public void setValor(int valor) {
         this.valor_pago = valor;
     }
 

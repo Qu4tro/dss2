@@ -13,7 +13,7 @@ class Connect {
     public static Connection connect() {
         Connection conn = null;
         try {
-            String url = "jdbc:sqlite:/home/quatro/dss/bd.db";
+            String url = "jdbc:sqlite:/home/oem/Desktop/trabalho/projecto/bd.db";
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
             System.out.println(e.getMessage());

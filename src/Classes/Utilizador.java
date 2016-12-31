@@ -3,7 +3,9 @@ package Classes;
 
 import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
  public class Utilizador {
      
@@ -14,15 +16,17 @@ import java.util.List;
     public String password;
     public String email;
     public List<Grupo> grupos;
+    public List<Pagamento> pagamentos;
 
     public Utilizador(){
-        this.grupos = new ArrayList<>();
+        
     }
  
     public Utilizador(String nick, String email) {
         this.nick = nick;
         this.email = email;
         this.grupos = new ArrayList<>();
+        this.pagamentos = new ArrayList<>();
     }
 
     public Utilizador(String nickname,String email,String password,String iban){
@@ -32,17 +36,10 @@ import java.util.List;
         this.email=email;
         this.iban = iban;
         this.grupos = new ArrayList<>();
+        this.pagamentos = new ArrayList<>();
     }
 
    
-
-       
- 
- 
-     // Metodos
- 
-
-        
 	
     
 	public String getNickname(){
@@ -88,6 +85,13 @@ import java.util.List;
     public List<Grupo> getGrupos(){
         return new ArrayList<>(grupos);
     }
+    
+    public void addPag(Pagamento p){
+    this.pagamentos.add(p);
+    }
+       
+     
+    
     
     public Grupo getGrupo1(){
         Grupo u = new Grupo();

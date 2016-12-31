@@ -221,6 +221,7 @@ public class KillBills extends javax.swing.JFrame {
         DefaultListModel<String> lista = new DefaultListModel<>();
         k.getGrupos(k.loggedUser.getNickname()).stream().forEach(n -> lista.addElement(n));
         jList1.setModel(lista);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
