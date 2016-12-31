@@ -34,6 +34,7 @@ public class GrupoDAO {
                 Grupo grupo = new Grupo();
                 grupo.setNome(set.getString(1));
                 grupo.setModerador(set.getString(2));
+                grupos.put(grupo.getNome(), grupo);
             }
 
         } catch(SQLException e){
