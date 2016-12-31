@@ -62,7 +62,7 @@ public class DespesaDAO {
 
 
 
-    public static void addDespesa(Despesa despesa){
+    public static boolean addDespesa(Despesa despesa){
 
         Connection c = Connect.connect();
 
@@ -82,6 +82,7 @@ public class DespesaDAO {
 
         } catch(SQLException e){
             System.out.println(e.getMessage());
+            return false;
         } finally{
             try {
                 c.close();
@@ -89,6 +90,8 @@ public class DespesaDAO {
                 System.out.println(e.getMessage());
             }
         }
+
+        return true;
     }
 
 

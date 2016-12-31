@@ -59,7 +59,7 @@ public class PagamentoDAO {
         return pagamentos;
     }
 
-    public static void addPagamento(Pagamento p, Map<String, Utilizador> users){
+    public static boolean addPagamento(Pagamento p, Map<String, Utilizador> users){
 
         Map<String, Integer> idUsers = users.entrySet()
                                             .stream()
@@ -82,12 +82,16 @@ public class PagamentoDAO {
 
         } catch(SQLException e){
             System.out.println(e.getMessage());
+            return false;
         } finally{
             try {
                 c.close();
             } catch(Exception e){
                 System.out.println(e.getMessage());
+                return false;
             }
         }
+
+        return true;
     }
 }

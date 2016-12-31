@@ -51,7 +51,7 @@ public class GrupoDAO {
         return grupos;
     }
 
-    public void addGrupo(String nome, Utilizador moderador){
+    public boolean addGrupo(String nome, Utilizador moderador){
         Connection c = Connect.connect();
         try {
             PreparedStatement prep = c.prepareStatement(
@@ -65,6 +65,7 @@ public class GrupoDAO {
 
         } catch(SQLException e){
             System.out.println(e.getMessage());
+            return false;
         } finally{
             try {
                 c.close();
@@ -72,9 +73,11 @@ public class GrupoDAO {
                 System.out.println(e.getMessage());
             }
         }
+
+        return true;
     }
 
-    public void addUtilizadorToGrupo(Utilizador u, Grupo g){
+    public boolean addUtilizadorToGrupo(Utilizador u, Grupo g){
         Connection c = Connect.connect();
         try {
             PreparedStatement prep = c.prepareStatement(
@@ -88,6 +91,7 @@ public class GrupoDAO {
 
         } catch(SQLException e){
             System.out.println(e.getMessage());
+            return false;
         } finally{
             try {
                 c.close();
@@ -95,5 +99,7 @@ public class GrupoDAO {
                 System.out.println(e.getMessage());
             }
         }
+
+        return true;
     }
 }
