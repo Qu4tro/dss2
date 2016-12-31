@@ -1,5 +1,6 @@
 package daos;
 
+import Classes.Despesa;
 import Classes.Grupo;
 import Classes.Utilizador;
 
@@ -134,5 +135,38 @@ public class GrupoDAO {
         }
 
         return membros;
+    }
+    
+    public static List<Despesa> getHistórico (Integer id){
+        ArrayList<Despesa> historico = new ArrayList<>();
+        Connection c = Connect.connect();
+        ResultSet set = null;
+
+        try {
+            PreparedStatement prep = c.prepareStatement(
+                    "SELECT * FROM Historico where Historico.Grupo = ?"
+            );
+            
+            prep.setString(1,id.toString());
+            
+            set = prep.executeQuery();
+
+            while (set.next()){
+                Despesa d = DespesasDAO.getDespesa(set.getInt(1));
+                historico.add(d);
+            }
+
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+        } finally{
+            try {
+                set.close();
+                c.close();
+            } catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return historico;
     }
 }
