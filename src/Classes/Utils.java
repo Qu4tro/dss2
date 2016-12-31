@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-class Utils {
+public class Utils {
 
     public static GregorianCalendar parseData(String dd_mm_yy) {
         SimpleDateFormat fmt = new SimpleDateFormat("dd-MMM-yyyy");

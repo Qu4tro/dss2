@@ -14,25 +14,25 @@ import java.util.Set;
 public class Grupo{
     
     // Variaveis de Instância
-    private Utilizador moderador;
+    private String moderador;
     private List<Utilizador> membros;
     private String nome ;
     private List<Despesa> historico;
        
 
     // Construtores
-	public Grupo (Utilizador moderador, String nome){
+	public Grupo (String moderador, String nome){
 		this.moderador = moderador;
-		this.membros = new ArrayList<Utilizador>();
+		this.membros = new ArrayList<>();
 		this.nome = nome;
-		this.historico = new ArrayList<Despesa>();
+		this.historico = new ArrayList<>();
 	}
         
         public Grupo (String nome){
             this.moderador = null;
-            this.membros = new ArrayList<Utilizador>();
+            this.membros = new ArrayList<>();
             this.nome = nome;
-            this.historico = new ArrayList<Despesa>();
+            this.historico = new ArrayList<>();
         }
         public Grupo (){
             
@@ -49,15 +49,15 @@ public class Grupo{
 		return this.nome;
 	}
 
-	public Utilizador getModerador (){
+	public String getModerador (){
 		return this.moderador;
 	}
 
 	public void setNome (String nome){
 		this.nome = nome;
 	}
-	
-	public void setModerador (Utilizador moderador){
+
+	public void setModerador (String moderador){
 		this.moderador = moderador;
 	}
 

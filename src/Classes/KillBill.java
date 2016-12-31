@@ -30,7 +30,6 @@ public class KillBill {
         Utilizador u = new Utilizador("manuel","","12345","");
         Grupo b = new Grupo ("Principal");
         loggedUser = u;
-        u.addGrupo(b);
         b.addMembro(u);
         this.users.put("manuel",u);
         this.grupos.put("Principal", b);
@@ -43,7 +42,7 @@ public class KillBill {
     }*/
 
     public Map<String, Utilizador> getUsers() {
-        return users;
+        return UtilizadorDAO.getUtilizadores();
     }
     
     
@@ -74,30 +73,27 @@ public class KillBill {
     
     public List<String> getGrupos(String user){
         //    return users.get(user).getGrupos().stream().map(Grupo::getNome).collect(Collectors.toList());
-        return GrupoDAO.getGrupos(user);
+        return GrupoDAO.getGrupos(user).keySet()
+                                       .stream()
+                                       .collect(Collectors.toList());
     }
     
     public Grupo getGrupo(String nome){
             return this.grupos.get(nome);
     }
 
-    public int getSizeGrupo(String nome){
-      int size = this.users.get(nome).getSize();
-      return size;
-    }
-    
     public void adicionarDespesa(String grupo, Utilizador responsavel, String descricao, Float valor,GregorianCalendar dataDespesa) {
 
         GregorianCalendar now = new GregorianCalendar();
         Optional.ofNullable(grupos.get(grupo)).ifPresent(g ->
-                g.adicionarDespesa(new Despesa(descricao, valor, responsavel, now, dataDespesa)));
+                g.adicionarDespesa(new Despesa(descricao, valor, responsavel.getNickname(), now, dataDespesa)));
     }
 
        
     public boolean adicionarGrupo(String nome){
         boolean res = false;
         if (!this.grupos.containsKey(nome)){
-            this.grupos.put(nome,new Grupo(this.loggedUser,nome));
+            this.grupos.put(nome,new Grupo(this.loggedUser.getNickname(),nome));
             res = true;
         }
         return res;
