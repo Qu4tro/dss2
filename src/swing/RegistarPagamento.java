@@ -4,13 +4,12 @@
  * and open the template in the editor.
  */
 package swing;
-import java.util.*;
 import Classes.Pagamento;
 import Classes.KillBill;
+import static Classes.Utils.strToInt;
 import java.awt.Frame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import static swing.Main.strToInt;
 
 /**
  *

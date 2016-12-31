@@ -74,7 +74,7 @@ public class KillBill {
         // ADD cenas da base de dados referentes ao utilizador para o grupos e users.
         
         
-        
+       
         
         // percorrer lista de grupos do utilizador
             // lista de membros
