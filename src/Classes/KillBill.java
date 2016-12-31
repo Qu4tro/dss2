@@ -35,6 +35,7 @@ public class KillBill {
         this.users.put("manuel",u);
         this.grupos.put("Principal", b);
     }
+   
 
   /*  public int getIntLogin(String email, String pass) throws SQLException {
     
@@ -69,6 +70,15 @@ public class KillBill {
                     .filter(u -> u.getPassword().equals(password))
                     .orElse(null);
 
+        // ADD cenas da base de dados referentes ao utilizador para o grupos e users.
+        
+        
+        
+        
+        // percorrer lista de grupos do utilizador
+            // lista de membros
+                
+       
         return (loggedUser != null);
     }
     
