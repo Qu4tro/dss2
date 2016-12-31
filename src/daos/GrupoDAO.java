@@ -28,14 +28,15 @@ public class GrupoDAO {
 
         try {
             PreparedStatement prep = c.prepareStatement(
-                    "SELECT * FROM Grupo"
+                    "SELECT rowid, * FROM Grupo"
             );
             set = prep.executeQuery();
 
             while (set.next()){
                 Grupo grupo = new Grupo();
-                grupo.setNome(set.getString(1));
-                grupo.setModerador(set.getString(2));
+                grupo.setID(set.getInt(1));
+                grupo.setNome(set.getString(2));
+                grupo.setModerador(set.getString(3));
                 //despesas.getDespesas(utilizadores.getUtilizadores());
                 grupos.put(grupo.getNome(), grupo);
             }
@@ -104,5 +105,39 @@ public class GrupoDAO {
         }
 
         return true;
+    }
+    
+    
+    public List<Utilizador> getListaMembros (Integer id){
+        ArrayList<Utilizador> membros = new ArrayList<>();
+        Connection c = Connect.connect();
+        ResultSet set = null;
+
+        try {
+            PreparedStatement prep = c.prepareStatement(
+                    "SELECT * FROM GrupoUtilizador where GrupoUtilizador.Grupo = ?"
+            );
+            
+            prep.setString(1,id.toString());
+            
+            set = prep.executeQuery();
+
+            while (set.next()){
+                Utilizador user = UtilizadorDAO.getUtilizador(set.getString(1));
+                membros.add(user);
+            }
+
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+        } finally{
+            try {
+                set.close();
+                c.close();
+            } catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return membros;
     }
 }
