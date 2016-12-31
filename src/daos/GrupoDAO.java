@@ -14,12 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * Created by quatro on 30/12/16.
- */
 public class GrupoDAO {
-
-    
     
     public static Map<String, Grupo> getGrupos(String user){
 
@@ -60,7 +55,7 @@ public class GrupoDAO {
         Connection c = Connect.connect();
         try {
             PreparedStatement prep = c.prepareStatement(
-                    "INSERT `Grupo` VALUES (?, ?)"
+                    "INSERT OR REPLACE INTO `Grupo` VALUES (?, ?)"
             );
 
             prep.setString(1,nome);
@@ -157,7 +152,7 @@ public class GrupoDAO {
             set = prep.executeQuery();
 
             while (set.next()){
-                Despesa d = DespesasDAO.getDespesa(set.getInt(1));
+                Despesa d = DespesaDAO.getDespesa(set.getInt(1));
                 historico.add(d);
             }
 

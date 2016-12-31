@@ -98,14 +98,13 @@ public class KillBill {
                 g.adicionarDespesa(new Despesa(descricao, valor, responsavel.getNickname(), now, dataDespesa)));
     }
 
-       
     public boolean adicionarGrupo(String nome){
-        boolean res = false;
         if (!this.grupos.containsKey(nome)){
+            GrupoDAO.addGrupo(nome, this.loggedUser);
             this.grupos.put(nome,new Grupo(this.loggedUser.getNickname(),nome));
-            res = true;
+            return true;
         }
-        return res;
+        return false;
     }
    
 }
